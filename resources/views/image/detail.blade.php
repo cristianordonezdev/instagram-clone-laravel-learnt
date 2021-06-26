@@ -1,10 +1,22 @@
-<div id="backgroundPop" class="h-full w-full fixed"></div>
 <x-app-layout>
 
+    <div id="backgroundPop" class="h-full w-full ">
 
-    <x-slot name="header">
+        <div class="optionsBox bg-white mx-auto w-1/6 h-auto sm:rounded-lg mb-12">
 
-    </x-slot>
+            <span class="block text-base text-red-500  font-bold border-b text-center"><a href="" class="p-3 block">Delete</a></span>
+            <span class="block text-base text-center font-bold"><a href="" class="p-3 block">Edit</a></span>
+
+
+        </div>
+    </div>
+
+    <!-- <x-slot name="header">
+    
+    </x-slot> -->
+
+
+
     <div class="py-12 mx-auto">
         <div class=" mx-auto w-4/6 sm:px-6 cop lg:px-8 ">
 
@@ -12,10 +24,10 @@
 
 
 
-                <div class="w-2/3 float-left coi">
+                <div class="w-8/12 float-left coi">
                     <img class="w-full" src="{{url('getImagePost/'.$img->image_path)}}" alt="">
                 </div>
-                <div class="w-1/3 cod p-4 conta float-left block ">
+                <div class="w-4/12 cod p-3 conta float-left block ">
 
                     <!-- NOMBRE Y FOTO DEL USUARIO -->
                     <div class="border-b-2 pb-2 block conuser">
@@ -27,7 +39,8 @@
                             <img src="{{url('getImage/default_user.png')}}" class="rounded-full w-12 my-3 mx-auto" alt="IMAGEN">
                             @endif
                         </div>
-                        <p class="my-5 pl-1 w-10/12 inline-block">{{$img->user->name }} {{$img->user->lastname}} </p>
+                        <p class="my-7 pl-1 float-left w-8/12 text-sm font-bold inline-block">{{$img->user->name }} {{$img->user->lastname}} </p>
+                        <button class="options inline-block float-left w-2/12 my-7 focus:outline-none"><i class=" cursor-pointer text-sm fas fa-ellipsis-h"></i></button>
                     </div>
                     <!-- ESTADO DE LA FOTO -->
                     <div class="block conestado border-b-2 overflow-hidden">
@@ -47,25 +60,25 @@
                     <div class="block border-b-2 mt-2 ">
                         <?php $existLike = false; ?>
                         @foreach($img->likes as $like)
-                            @if($like->user->id == Auth::user()->id)
-                                <?php $existLike = true; ?>
-                            @endif
+                        @if($like->user->id == Auth::user()->id)
+                        <?php $existLike = true; ?>
+                        @endif
                         @endforeach
 
                         @if($existLike)
-                            <span class=""> <button class="focus:outline-none fas fa-heart text-2xl text-red-500 like" data-id="{{$img->id}}"> </button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
+                        <span class=""> <button class="focus:outline-none fas fa-heart text-2xl text-red-500 like" data-id="{{$img->id}}"> </button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
                         @else
-                            <span class=""> <button class="focus:outline-none far fa-heart text-2xl like" data-id="{{$img->id}}"></button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
+                        <span class=""> <button class="focus:outline-none far fa-heart text-2xl like" data-id="{{$img->id}}"></button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
                         @endif
 
 
                         <?php $others = "" ?>
                         @foreach($img->likes as $likes)
-                            @if( count($img->likes) > 1)
-                                <?php $others = " and others" ?>
-                            @endif
-                            <p class="">Liked by <strong>{{$likes->user->name}}</strong> {{$others}}</p>
-                            @break
+                        @if( count($img->likes) > 1)
+                        <?php $others = " and others" ?>
+                        @endif
+                        <p class="">Liked by <strong>{{$likes->user->name}}</strong> {{$others}}</p>
+                        @break
                         @endforeach
                         <p class="text-gray-400"> {{\FormatTime::LongTimeFilter($img->created_at )}}s </p>
                     </div>

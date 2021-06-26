@@ -1,9 +1,15 @@
 #backgroundPop{
-
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1;
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    
     display: none;
 }
+.optionsBox{
+    /* display: none; */
+    margin-top: 15%;
+}
+
+
 
 .cop{
     max-height:fit-content;
@@ -26,7 +32,7 @@
 }
 
 .conta{
-    height: inherit;
+    height: 1000px;
     display: grid;
     grid-template-columns: repeat(1,1fr);
 

@@ -29,6 +29,16 @@ window.addEventListener('load', function () {
 
     })
 
+    $(".options").click(function(){
+        console.log('You are clicking options');
+        let background = $('#backgroundPop');
+        background.css('display','block');
+    });
+
+    $('#backgroundPop').click(function(){
+        $(this).css('display','none');
+    });
+
 });
 
 

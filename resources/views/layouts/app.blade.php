@@ -26,8 +26,8 @@
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            <header class="bg-white shadow">
-            </header>
+            <!-- <header class="bg-white shadow">
+            </header> -->
 
             <!-- Page Content -->
             <main>

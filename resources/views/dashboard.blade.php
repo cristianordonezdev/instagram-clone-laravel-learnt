@@ -1,19 +1,11 @@
 <x-app-layout>
-    <x-slot name="header"></x-slot>
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             @if(session('message'))
             <div class="bg-white overflow-hidden shadow-sm p-6 bg-green-200 mb-6 w-full border"> {{session('message')}}</div>
             @endif
-            <!-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
-
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-             -->
             @foreach($images as $img)
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-auto mb-12">
                 <div class="">
