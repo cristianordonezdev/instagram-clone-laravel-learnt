@@ -1,0 +1,40 @@
+#backgroundPop{
+
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+    display: none;
+}
+
+.cop{
+    max-height:fit-content;
+}
+
+.cof{
+    max-height:800px;
+}
+
+.coi{
+    max-height: 800px;
+}
+
+.cola{
+    /* height:; */
+}
+
+.cof,.coi,.cod{
+    /* height: fit-content; */
+}
+
+.conta{
+    height: inherit;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+
+    grid-template-rows: 15% 55% 20% 10%;
+
+}
+
+.like:hover{
+    transform:scale(1.2,1.2);
+    transition: all 500ms;
+}
