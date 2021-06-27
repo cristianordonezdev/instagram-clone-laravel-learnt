@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
+use App\Models\Comment;
+use App\Models\Like;
 
 class ImageController extends Controller
 {
@@ -57,5 +59,38 @@ class ImageController extends Controller
         return view('image.detail',array(
             'img' => $img
         ));
+    }
+
+    public function deleteImage($id){
+        $user = Auth::user();
+        $image = Image::find($id);
+        $comments = Comment::where('image_id',$id)->get();
+        $likes = Like::where('image_id',$id)->get();
+
+        if($user && $image && $user->id == $image->user_id){
+
+            //ELIMINANDO LOS COMENTARIOS
+            if($comments && count($comments) > 0){
+                foreach($comments as $com){
+                    $com->delete();
+                }
+            }
+            //ELIMINANDO LIKES
+
+            if($likes && count($likes) > 0){
+                foreach($likes as $li){
+                    $li->delete();
+                }
+            }
+
+            //ELIMINANDO EL STORAGE
+
+            Storage::disk('images')->delete($image->image_path);
+
+            //ELIMINAR REGISTO DE IMAGEN
+            $image->delete();
+        }
+
+        return redirect('/')->with('message','The post has been deleted');
     }
 }

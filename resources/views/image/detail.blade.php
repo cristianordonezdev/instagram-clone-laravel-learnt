@@ -4,7 +4,7 @@
 
         <div class="optionsBox bg-white mx-auto w-1/6 h-auto sm:rounded-lg mb-12">
 
-            <span class="block text-base text-red-500  font-bold border-b text-center"><a href="" class="p-3 block">Delete</a></span>
+            <span class="block text-base text-red-500  font-bold border-b text-center"><a href="{{url('deleteImage/'.$img->id)}}" class="p-3 block">Delete</a></span>
             <span class="block text-base text-center font-bold"><a href="" class="p-3 block">Edit</a></span>
 
 
@@ -39,8 +39,10 @@
                             <img src="{{url('getImage/default_user.png')}}" class="rounded-full w-12 my-3 mx-auto" alt="IMAGEN">
                             @endif
                         </div>
-                        <p class="my-7 pl-1 float-left w-8/12 text-sm font-bold inline-block">{{$img->user->name }} {{$img->user->lastname}} </p>
-                        <button class="options inline-block float-left w-2/12 my-7 focus:outline-none"><i class=" cursor-pointer text-sm fas fa-ellipsis-h"></i></button>
+                        <a href="{{url('profile/'.$img->user->id)}}"><p class="hover:underline my-7 pl-1 float-left w-8/12 text-sm font-bold inline-block">{{$img->user->name }} {{$img->user->lastname}} </p></a>
+                        @if(Auth::user()->id==$img->user_id)
+                            <button class="options inline-block float-left w-2/12 my-7 focus:outline-none"><i class=" cursor-pointer text-sm fas fa-ellipsis-h"></i></button>
+                        @endif
                     </div>
                     <!-- ESTADO DE LA FOTO -->
                     <div class="block conestado border-b-2 overflow-hidden">
