@@ -5,7 +5,7 @@
         <div class="optionsBox bg-white mx-auto w-1/6 h-auto sm:rounded-lg mb-12">
 
             <span class="block text-base text-red-500  font-bold border-b text-center"><a href="{{url('deleteImage/'.$img->id)}}" class="p-3 block">Delete</a></span>
-            <span class="block text-base text-center font-bold"><a href="" class="p-3 block">Edit</a></span>
+            <span class="block text-base text-center font-bold"><a href="{{url('editImage/'.$img->id)}}" class="p-3 block">Edit</a></span>
 
 
         </div>

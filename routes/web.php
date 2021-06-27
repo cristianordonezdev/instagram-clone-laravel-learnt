@@ -39,5 +39,8 @@ Route::get('/deleteComment/{id}',[CommentController::class, 'deleteComment'])->m
 Route::get('/like/{image_id}',[LikeController::class, 'like'])->middleware('auth');
 Route::get('/profile/{id}',[UserController::class, 'profile'])->middleware('auth');
 Route::get('/deleteImage/{id}',[ImageController::class, 'deleteImage'])->middleware(('auth'));
+Route::get('/editImage/{id}',[ImageController::class, 'editImage'])->middleware(('auth'));
+
+Route::post('/editSave',[ImageController::class, 'editSave'])->middleware(('auth'));
 
 require __DIR__.'/auth.php';

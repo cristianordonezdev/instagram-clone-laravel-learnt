@@ -93,4 +93,34 @@ class ImageController extends Controller
 
         return redirect('/')->with('message','The post has been deleted');
     }
+
+    public function editImage($id){
+        $img = Image::find($id);
+        return view('image.editImage',['img'=>$img]);
+    }
+
+    public function editSave(Request $request){
+
+        $validate = $this->validate($request, array(
+            'image' => 'mimes:png,jpg,jpeg'
+        ));
+
+
+        $user = Auth::user();
+        $oldImage = Image::find($request->input('id'));
+        $image = $request->file('image');
+        $description = $request->input('description');
+
+        if($image){
+            Storage::disk('images')->delete($oldImage->image_path);
+
+            $image_naem = time() . $image->getClientOriginalName();
+            Storage::disk('images')->put($image_naem, File::get($image));
+            $oldImage->image_path = $image_naem;
+        }
+        $oldImage->description = $description;
+        $oldImage->update();
+
+        return redirect('/')->with('message','The post has been uploaded');
+    }
 }
