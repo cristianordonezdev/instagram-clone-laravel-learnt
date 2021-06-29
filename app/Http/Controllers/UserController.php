@@ -121,5 +121,10 @@ class UserController extends Controller{
         ));
     }
 
+    public function search($var){
+      
+        $users = User::where('name','LIKE','%'.$var.'%')->orWhere('nick','LIKE','%'.$var.'%')->orWhere('lastname','LIKE','%'.$var.'%')->paginate(5);
+        return view('user.showUsers',['user'=>$users]);
 
+    }
 }

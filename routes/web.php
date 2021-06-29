@@ -38,6 +38,10 @@ Route::post('/saveComment',[CommentController::class, 'saveComment'])->middlewar
 Route::get('/deleteComment/{id}',[CommentController::class, 'deleteComment'])->middleware('auth');
 Route::get('/like/{image_id}',[LikeController::class, 'like'])->middleware('auth');
 Route::get('/profile/{id}',[UserController::class, 'profile'])->middleware('auth');
+Route::get('/search/{thingToBeSearched}',[UserController::class, 'search'])->middleware('auth');
+
+
+
 Route::get('/deleteImage/{id}',[ImageController::class, 'deleteImage'])->middleware(('auth'));
 Route::get('/editImage/{id}',[ImageController::class, 'editImage'])->middleware(('auth'));
 

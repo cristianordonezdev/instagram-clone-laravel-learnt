@@ -39,6 +39,9 @@ window.addEventListener('load', function () {
         $(this).css('display','none');
     });
 
+    $('#formSearch').submit(function(){
+        $(this).attr('action',url+'search/'+$('#fieldSearch').val());
+    })
 });
 
 

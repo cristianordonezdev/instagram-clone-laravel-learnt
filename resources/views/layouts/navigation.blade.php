@@ -17,6 +17,18 @@
                             Home
                         </x-nav-link>
 
+                        <nav-link class="my-auto">
+                            <div class="border-2 h-10 bg-gray-100 rounded-lg">
+
+                                <i class="fas fa-search inline-block float-left w-2/12 text-center mt-2 text-gray-400 " ></i>
+
+                                <form action="" method="GET" id="formSearch">
+                                    <input type="text" placeholder="Search" id="fieldSearch" class="p-0 border-0 inline-block bg-transparent h-9 rounded-lg float-left w-10/12 focus:ring-0">
+                                </form>
+                            </div>
+
+                        </nav-link>
+
 
                     </div>
                 </div>
