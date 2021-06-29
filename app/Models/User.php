@@ -46,4 +46,13 @@ class User extends Authenticatable
     public function images(){
         return $this->hasMany('App\Models\Image');
     }
+
+    public function suscribers(){
+        return $this->hasMany('App\Models\Suscriber');
+    }
+
+    public function youFollow(){
+        return $this->belongsTo('App\Models\Suscriber');
+
+    }
 }

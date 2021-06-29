@@ -12,9 +12,14 @@
 
                 <div class="inline-block w-2/3"> 
                     <p class="text-3xl">{{$user->name}} {{$user->lastname}}</p>
+                    @foreach($suscriber as $s)
+                        <p>{{$s}}</p>
+                    @endforeach
                     <p class="text-xl mt-1 text-gray-500">@ {{$user->nick}} </p>
-                    <p class="mt-5 text-lg"><strong>{{count($user->images)}}</strong> <?= (count($user->images)==1) ? 'post' : 'posts'?></p>
-
+                    <div class="">
+                    <p class="inline-block display-left mt-5 text-lg"><strong>{{count($user->images)}}</strong> <?= (count($user->images)==1) ? 'post' : 'posts'?></p>
+                    <p class="ml-5 inline-block display-left mt-5 text-lg"><strong>{{count($user->suscribers)}}</strong> followers</p>
+                    </div>
                 </div>
             </div>
 

@@ -10,6 +10,7 @@ nick    VARCHAR (100),
 email   VARCHAR (255)NOT NULL,
 password    VARCHAR(255) NOT NULL,
 image   VARCHAR(255),
+
 created_at  DATETIME,
 updated_at  DATETIME,
 remember_token  VARCHAR(255),
@@ -70,6 +71,19 @@ CREATE TABLE IF NOT EXISTS likes(
     CONSTRAINT fk_image_likes FOREIGN KEY(image_id) REFERENCES images(id)
 )ENGINE=InnoDb;
 
+CREATE TABLE IF NOT EXISTS suscribers(
+    id INT(255) auto_increment NOT NULL,
+    
+    suscriber_id INT(255),
+    user_id INT(255),
+
+    created_at  DATETIME,
+    updated_at  DATETIME,
+    CONSTRAINT pk_suscriber PRIMARY KEY(id),
+    CONSTRAINT fk_suscribers_suscriber FOREIGN KEY(suscriber_id) REFERENCES users(id),
+    CONSTRAINT fk_suscribers_user_id FOREIGN KEY(user_id) REFERENCES users(id)
+
+)ENGINE=InnoDb;
 
 INSERT INTO likes VALUES(NULL,2,1, CURTIME(),CURTIME());
 INSERT INTO likes VALUES(NULL,3,1,CURTIME(),CURTIME());

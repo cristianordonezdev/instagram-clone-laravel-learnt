@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Suscriber;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -115,9 +116,10 @@ class UserController extends Controller{
     public function profile($id){
 
         $user = User::find($id);
-
+        $suscri = Suscriber::where('suscriber_id',$id)->get();
         return view('user.profile',array(
-            'user' => $user
+            'user' => $user,
+            'suscriber' =>$suscri
         ));
     }
 
