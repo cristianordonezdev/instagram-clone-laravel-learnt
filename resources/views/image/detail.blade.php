@@ -1,47 +1,43 @@
 <x-app-layout>
+    <div class="backgroundPop" class="">
 
-    <div id="backgroundPop" class="h-full w-full ">
+        <div class="optionsBox bg-white flex mx-auto w-1/6 sm:rounded-lg mb-12">
 
-        <div class="optionsBox bg-white mx-auto w-1/6 h-auto sm:rounded-lg mb-12">
-
-            <span class="block text-base text-red-500  font-bold border-b text-center"><a href="{{url('deleteImage/'.$img->id)}}" class="p-3 block">Delete</a></span>
+            <div class="block text-base text-red-500  font-bold border-b text-center"><a href="{{url('deleteImage/'.$img->id)}}" class="p-3 block">Delete</a></div>
             <span class="block text-base text-center font-bold"><a href="{{url('editImage/'.$img->id)}}" class="p-3 block">Edit</a></span>
 
 
         </div>
+
+
     </div>
-
-    <!-- <x-slot name="header">
-    
-    </x-slot> -->
-
-
-
     <div class="py-12 mx-auto">
-        <div class=" mx-auto w-4/6 sm:px-6 cop lg:px-8 ">
+        <div class=" mx-auto lg:w-4/6 sm:px-6 cop lg:px-8 ">
 
             <div class="bg-white overflow-hidden cof shadow-sm sm:rounded-lg mb-12">
 
 
 
-                <div class="w-8/12 float-left coi">
+                <div class="md:w-8/12 float-left coi">
                     <img class="w-full" src="{{url('getImagePost/'.$img->image_path)}}" alt="">
                 </div>
-                <div class="w-4/12 cod p-3 conta float-left block ">
+                <div class="md:w-4/12 sm:w-full cod p-3 conta float-left block ">
 
                     <!-- NOMBRE Y FOTO DEL USUARIO -->
-                    <div class="border-b-2 pb-2 block conuser">
+                    <div class="border-b-2 block pb-2 conuser">
 
                         <div class="inline-block w-2/12 float-left">
                             @if($img->user->image)
-                            <img src="{{url('getImage/'.$img->user->image)}}" class="rounded-full w-12 h-12 my-3 mx-auto " alt="IMAGEN">
+                            <img src="{{url('getImage/'.$img->user->image)}}" class="rounded-full w-12 h-12 object-cover my-3 mx-auto " alt="IMAGEN">
                             @else
-                            <img src="{{url('getImage/default_user.png')}}" class="rounded-full w-12 my-3 mx-auto" alt="IMAGEN">
+                            <img src="{{url('getImage/default_user.png')}}" class="rounded-full w-12 my-3  object-cover mx-auto" alt="IMAGEN">
                             @endif
                         </div>
-                        <a href="{{url('profile/'.$img->user->id)}}"><p class="hover:underline my-7 pl-1 float-left w-8/12 text-sm font-bold inline-block">{{$img->user->name }} {{$img->user->lastname}} </p></a>
+                        <a href="{{url('profile/'.$img->user->id)}}">
+                            <p class="hover:underline my-7 pl-1 float-left w-8/12 text-sm font-bold inline-block">{{$img->user->name }} {{$img->user->lastname}} </p>
+                        </a>
                         @if(Auth::user()->id==$img->user_id)
-                            <button class="options inline-block float-left w-2/12 my-7 focus:outline-none"><i class=" cursor-pointer text-sm fas fa-ellipsis-h"></i></button>
+                        <button class="options inline-block float-left w-2/12 my-7 focus:outline-none"><i class=" cursor-pointer text-sm fas fa-ellipsis-h"></i></button>
                         @endif
                     </div>
                     <!-- ESTADO DE LA FOTO -->
@@ -116,3 +112,6 @@
 
     </div>
 </x-app-layout>
+<!-- <x-slot name="header">
+    
+    </x-slot> -->

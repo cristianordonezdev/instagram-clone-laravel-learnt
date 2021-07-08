@@ -43,9 +43,9 @@
                         <x-slot name="trigger">
                             <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                 <div> @if(Auth::user()->image)
-                                    <img src="{{url('getImage/'.Auth::user()->image)}}" class="mx-auto rounded-full w-8 ml-2" alt="IMAGEN">
+                                    <img src="{{url('getImage/'.Auth::user()->image)}}" class="mx-auto object-cover rounded-full w-8 h-8 ml-2" alt="IMAGEN">
                                     @else
-                                    <img src="{{url('getImage/default_user.png')}}" class="mx-auto rounded-full w-8 ml-2" alt="IMAGEN">
+                                    <img src="{{url('getImage/default_user.png')}}" class="mx-auto  object-cover rounded-full w-8 h-8 ml-2" alt="IMAGEN">
                                     @endif
                                 </div>
                             </button>
@@ -55,7 +55,7 @@
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <x-dropdown-link href="">
+                                <x-dropdown-link href="{{url('profile/'.Auth::user()->id)}}">
                                     My profile
                                 </x-dropdown-link>
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            background-color: rgb(20, 223, 223);
+        }
+
+        .container{
+            background-color: white;
+            height: 1000px;
+        }
+
+        .modalBack{
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            visibility:visible;
+        }
+
+        .modal{
+            width: 500px;
+            height: 300px;
+            background-color: white;
+            position: absolute;
+            display: flex;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"><H1>HOLA MI CONTENEDOR</H1>
+        
+        <div class="modalBack">
+
+            <div class="modal">
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let back = document.querySelectorAll('.modalBack')[0];
+          back.addEventListener('click',function(e){
+            e.preventDefault();
+            console.log('HolaSoy la caja de fondo');
+        });
+
+        let modal = document.querySelectorAll('.modal')[0];
+          modal.addEventListener('click',function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            console.log('Hola soy la caja blanca');
+        });
+    </script>
+</body>
+</html>

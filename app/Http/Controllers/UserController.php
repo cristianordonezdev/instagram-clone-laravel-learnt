@@ -117,9 +117,11 @@ class UserController extends Controller{
 
         $user = User::find($id);
         $suscri = Suscriber::where('suscriber_id',$id)->get();
+        $s = Suscriber::all();
         return view('user.profile',array(
             'user' => $user,
-            'suscriber' =>$suscri
+            'suscriber' =>$suscri,
+            'sus'=>$s
         ));
     }
 

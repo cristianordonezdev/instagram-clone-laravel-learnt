@@ -27,9 +27,9 @@
                 <div class="p-6 bg-white border-b text-center border-gray-200">
 
                     @if(Auth::user()->image)
-                    <img src="{{url('getImage/'.Auth::user()->image)}}" class="mx-auto rounded-full w-32 mt-5" alt="IMAGEN">
+                    <img src="{{url('getImage/'.Auth::user()->image)}}" class="mx-auto rounded-full object-cover w-32 h-32 mt-5" alt="IMAGEN">
                     @else
-                    <img src="{{url('getImage/default_user.png')}}" class="mx-auto rounded-full w-32 mt-5" alt="IMAGEN">
+                    <img src="{{url('getImage/default_user.png')}}" class="mx-auto rounded-full  object-cover w-32 h-32 mt-5" alt="IMAGEN">
                     @endif
 
                     <h2 class="mt-3 text-2xl">{{Auth::user()->name}}</h2>

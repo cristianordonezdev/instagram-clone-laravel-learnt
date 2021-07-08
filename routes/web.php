@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\SuscriberController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 /*
@@ -45,6 +46,10 @@ Route::get('/search/{thingToBeSearched}',[UserController::class, 'search'])->mid
 Route::get('/deleteImage/{id}',[ImageController::class, 'deleteImage'])->middleware(('auth'));
 Route::get('/editImage/{id}',[ImageController::class, 'editImage'])->middleware(('auth'));
 
-Route::post('/editSave',[ImageController::class, 'editSave'])->middleware(('auth'));
+Route::get('/suscribeAction/{id}',[SuscriberController::class, 'suscribeAction'])->middleware(('auth'));
+
+
+
+
 
 require __DIR__.'/auth.php';

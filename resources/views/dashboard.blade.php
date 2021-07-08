@@ -1,3 +1,4 @@
+
 <x-app-layout>
 
     <div class="py-12">
@@ -11,14 +12,17 @@
                 <div class="">
                     <div class="inline-block w-1/12 float-left">
                         @if($img->user->image)
-                        <img src="{{url('getImage/'.$img->user->image)}}" class="rounded-full w-10 h-10 my-3 mx-auto " alt="IMAGEN">
+                        <img src="{{url('getImage/'.$img->user->image)}}" class="rounded-full object-cover w-10 h-10 my-3 mx-auto " alt="IMAGEN">
                         @else
-                        <img src="{{url('getImage/default_user.png')}}" class="rounded-full w-10 my-3 mx-auto" alt="IMAGEN">
+                        <img src="{{url('getImage/default_user.png')}}" class="rounded-full object-cover w-10 my-3 mx-auto" alt="IMAGEN">
                         @endif
                     </div>
+                    <!-- @foreach($suscribers as $sus)
+                    @endforeach -->
 
-
-                    <a href="{{url('profile/'.$img->user->id)}}" ><p class="mt-5 w-11/12 inline-block hover:underline">{{$img->user->name }} {{$img->user->lastname}} <span class="text-gray-400">| @ {{$img->user->nick}}</span></p></a>
+                    <a href="{{url('profile/'.$img->user->id)}}">
+                        <p class="mt-5 w-11/12 inline-block hover:underline">{{$img->user->name }} {{$img->user->lastname}} <span class="text-gray-400">| @ {{$img->user->nick}}</span></p>
+                    </a>
                     <div class="mb-3">
                         <img class="w-full block" src="{{url('getImagePost/'.$img->image_path)}}" alt="">
                     </div>
@@ -28,27 +32,27 @@
                         <span class="p-5"> <button class="focus:outline-none"><i id="like" class="far fa-heart text-2xl"></i></button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
 
                     @endif -->
-                    <?php $existLike = false;?>
+                    <?php $existLike = false; ?>
                     @foreach($img->likes as $like)
-                        @if($like->user->id == Auth::user()->id)
-                        <?php $existLike = true;?>
-                        @endif
+                    @if($like->user->id == Auth::user()->id)
+                    <?php $existLike = true; ?>
+                    @endif
                     @endforeach
 
-                        @if($existLike)
-                            <span class="p-5"> <button class="focus:outline-none fas fa-heart text-2xl text-red-500 like" data-id="{{$img->id}}"> </button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
-                        @else
-                            <span class="p-5"> <button class="focus:outline-none far fa-heart text-2xl like"  data-id="{{$img->id}}"></button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
-                        @endif
+                    @if($existLike)
+                    <span class="p-5"> <button class="focus:outline-none fas fa-heart text-2xl text-red-500 like" data-id="{{$img->id}}"> </button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
+                    @else
+                    <span class="p-5"> <button class="focus:outline-none far fa-heart text-2xl like" data-id="{{$img->id}}"></button> <a href="{{url('detail/'.$img->id)}}"><i class="far fa-comment text-2xl pl-3"></i></a> </span>
+                    @endif
 
 
-                    <?php $others = "" ?>   
+                    <?php $others = "" ?>
                     @foreach($img->likes as $likes)
-                        @if( count($img->likes) > 1)
-                            <?php $others = " and others" ?>
-                        @endif
-                        <p class="pl-5">Liked by <strong>{{$likes->user->name}}</strong> {{$others}}</p>
-                        @break
+                    @if( count($img->likes) > 1)
+                    <?php $others = " and others" ?>
+                    @endif
+                    <p class="pl-5">Liked by <strong>{{$likes->user->name}}</strong> {{$others}}</p>
+                    @break
                     @endforeach
                     <div>
                         <!-- COMENTARIOS Y DESCRPCION -->
@@ -60,10 +64,10 @@
                         </a>
                         @endif
                         @foreach($img->comments as $com)
-                            <p> <span class="font-bold pl-5">@ {{$com->user->nick }} </span>{{$com->content}}</p>
-                            <?php $var++; ?>
+                        <p> <span class="font-bold pl-5">@ {{$com->user->nick }} </span>{{$com->content}}</p>
+                        <?php $var++; ?>
                         @if($var==2)
-                            @break
+                        @break
                         @endif
                         @endforeach
 
@@ -77,7 +81,6 @@
             @endforeach
 
 
-            {{$images->links()}}
         </div>
 
 

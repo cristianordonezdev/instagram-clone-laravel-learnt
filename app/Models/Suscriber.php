@@ -12,11 +12,11 @@ class Suscriber extends Model
     protected $table = "suscribers";
 
     public function users(){
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User','suscriber_id');
     }
-    // public function suscriber(){
-    //     return $this->belongsTo('App\Models\User','suscriber_id');
-    // }
+    public function suscriberModel(){
+         return $this->belongsTo('App\Models\User','user_id');
+     }
 
     
 }

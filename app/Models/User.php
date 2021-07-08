@@ -51,8 +51,5 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Suscriber');
     }
 
-    public function youFollow(){
-        return $this->belongsTo('App\Models\Suscriber');
 
-    }
 }
